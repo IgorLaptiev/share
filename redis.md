@@ -23,7 +23,7 @@ If the connection errors occur intermittently rather than consistently, it sugge
 ### 2. **Increase Connection Timeout**
    - If the connection timeout is too short, intermittent network latency can cause failures. Increase the `connectTimeout` and `syncTimeout` values in your connection string:
      ```
-     redis-dp-prod-pp-redis-centralus-az1.centralus.redisenterprise.cache.azure.net:10000,ssl=true,password=YOUR_PASSWORD,connectTimeout=10000,syncTimeout=5000
+     url:port,ssl=true,password=YOUR_PASSWORD,connectTimeout=10000,syncTimeout=5000
      ```
 
 ---
@@ -66,7 +66,7 @@ If the connection errors occur intermittently rather than consistently, it sugge
 ### 6. **Enable Keep-Alive**
    - Enable the `keep-alive` option to maintain the connection to Redis and avoid timeouts due to inactivity:
      ```
-     redis-dp-prod-pp-redis-centralus-az1.centralus.redisenterprise.cache.azure.net:10000,ssl=true,password=YOUR_PASSWORD,keepAlive=30
+     url:port,ssl=true,password=YOUR_PASSWORD,keepAlive=30
      ```
 
 ---
@@ -105,7 +105,7 @@ If the connection errors occur intermittently rather than consistently, it sugge
 ### Example of a Robust Connection Setup
 Here�s an example of a robust Redis connection setup in .NET:
 ```csharp
-var connectionString = "redis-dp-prod-pp-redis-centralus-az1.centralus.redisenterprise.cache.azure.net:10000,ssl=true,password=YOUR_PASSWORD,connectTimeout=10000,syncTimeout=5000,keepAlive=30";
+var connectionString = "url:port,ssl=true,password=YOUR_PASSWORD,connectTimeout=10000,syncTimeout=5000,keepAlive=30";
 var redis = ConnectionMultiplexer.Connect(connectionString);
 
 redis.ConnectionFailed += (sender, args) =>
